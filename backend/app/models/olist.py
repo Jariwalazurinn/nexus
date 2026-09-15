@@ -111,7 +111,10 @@ class OrderReview(Base):
     __tablename__ = "order_reviews"
 
     review_id = Column(String(32), primary_key=True)
-    order_id = Column(String(32), ForeignKey("orders.order_id"), primary_key=True)
+    # Indexed separately: the composite PK's leading column is review_id, so a
+    # join/filter on order_id alone (reviews-for-order, SLA dashboards) would
+    # otherwise full-scan this table per order — minutes on SQLite.
+    order_id = Column(String(32), ForeignKey("orders.order_id"), primary_key=True, index=True)
     review_score = Column(Integer, nullable=False, index=True)
     review_comment_title = Column(Text, nullable=True)
     review_comment_message = Column(Text, nullable=True)

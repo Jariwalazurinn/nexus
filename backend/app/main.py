@@ -186,6 +186,12 @@ for r in (
 ):
     app.include_router(r, dependencies=_agent_auth)
 
+# Read-only business analytics dashboards (SLA monitoring, business impact) —
+# same authenticated gate as automation/runs, no per-domain RBAC role.
+from app.api.v1 import analytics as v1_analytics  # noqa: E402
+
+app.include_router(v1_analytics.router, dependencies=_agent_auth)
+
 # System status / LLM health — public so the frontend can discover auth mode
 # and provider health before a session exists.
 app.include_router(v1_system.router)

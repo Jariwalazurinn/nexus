@@ -5,6 +5,8 @@ import CustomerAgentView from "./CustomerAgentView";
 import DomainAgentView from "./DomainAgentView";
 import OrchestratorView from "./OrchestratorView";
 import ApprovalsView from "./ApprovalsView";
+import SlaDashboard from "./analytics/SlaDashboard";
+import ImpactDashboard from "./analytics/ImpactDashboard";
 import Login from "./pages/Login";
 import { useAuth } from "./auth/AuthContext";
 import { subscribeEvents } from "./lib/ws";
@@ -22,6 +24,8 @@ type ActiveTab =
   | "logistics"
   | "pricing"
   | "marketing"
+  | "sla"
+  | "impact"
   | "approvals";
 
 const TABS: { key: ActiveTab; label: string; badge: string; accent: string }[] = [
@@ -37,6 +41,8 @@ const TABS: { key: ActiveTab; label: string; badge: string; accent: string }[] =
   { key: "pricing", label: "Pricing", badge: "Margin", accent: "var(--agent-pricing)" },
   { key: "marketing", label: "Marketing", badge: "Growth", accent: "var(--agent-marketing)" },
   { key: "customer", label: "Customer", badge: "Support", accent: "var(--agent-customer)" },
+  { key: "sla", label: "SLA Monitor", badge: "Delivery", accent: "var(--agent-logistics)" },
+  { key: "impact", label: "Impact", badge: "Revenue", accent: "var(--agent-pricing)" },
   { key: "approvals", label: "Approvals", badge: "HITL", accent: "var(--agent-approvals)" },
 ];
 
@@ -99,6 +105,9 @@ function visibleTabs(user: ReturnType<typeof useAuth>["user"]): ActiveTab[] {
   const tabs: ActiveTab[] = [];
   if (user.can_access_orchestrator) tabs.push("orchestrator");
   tabs.push(...TABS.map((t) => t.key).filter((k) => allowed.has(k)));
+  // The analytics dashboards are read-only cross-domain views on the generic
+  // authenticated gate (same as the backend routes) — every role gets them.
+  tabs.push("sla", "impact");
   tabs.push("approvals"); // every role gets Approvals — server-side scoped to their own domain
   return tabs;
 }
@@ -344,6 +353,14 @@ export default function App() {
 
         <TabSlot show={showTab("approvals")} mounted={visitedTabs.has("approvals")}>
           <ApprovalsView refreshKey={refreshKey + liveKey} />
+        </TabSlot>
+
+        <TabSlot show={showTab("sla")} mounted={visitedTabs.has("sla")}>
+          <SlaDashboard />
+        </TabSlot>
+
+        <TabSlot show={showTab("impact")} mounted={visitedTabs.has("impact")}>
+          <ImpactDashboard />
         </TabSlot>
 
         <TabSlot show={showTab("orders")} mounted={visitedTabs.has("orders")}>

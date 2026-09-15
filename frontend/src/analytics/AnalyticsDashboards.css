@@ -1,0 +1,422 @@
+/* ── Analytics dashboards (SLA Monitoring + Business Impact) ────────
+   Reuses the app-wide theme variables; scoped under .ana-* so nothing
+   leaks into the agent views. */
+
+.ana-root {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+}
+
+.ana-header .ana-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  margin: 6px 0 8px;
+  color: var(--text-primary);
+}
+
+.ana-subtitle {
+  color: var(--text-secondary);
+  max-width: 860px;
+  line-height: 1.5;
+  font-size: 0.92rem;
+}
+
+/* ── Filter bar ─────────────────────────────────────────────────── */
+.ana-filterbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-end;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.ana-filterbar label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.ana-filterbar input,
+.ana-filterbar select {
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 7px 10px;
+  font-size: 0.86rem;
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  min-width: 130px;
+}
+
+.ana-filterbar-actions {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.ana-btn-ghost {
+  border: 1px solid var(--border-strong);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ana-btn-ghost:hover {
+  background: var(--bg-elevated);
+}
+
+/* ── KPI cards ──────────────────────────────────────────────────── */
+.ana-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.ana-kpi-grid-compact {
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+}
+
+.ana-kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--status-neutral);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.ana-kpi-good { border-top-color: var(--status-success); }
+.ana-kpi-warn { border-top-color: var(--status-warning); }
+.ana-kpi-bad  { border-top-color: var(--status-danger); }
+.ana-kpi-info { border-top-color: var(--status-info); }
+
+.ana-kpi-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+}
+
+.ana-kpi-value {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.ana-kpi-sub {
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+}
+
+/* ── Sections & layout ──────────────────────────────────────────── */
+.ana-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 16px;
+}
+
+.ana-section {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  box-shadow: var(--shadow-sm);
+}
+
+.ana-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.ana-section-head h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--text-primary);
+}
+
+.ana-section-hint {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+/* ── Bars / charts ──────────────────────────────────────────────── */
+.ana-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ana-bars-tall {
+  gap: 6px;
+}
+
+.ana-bar-row {
+  display: grid;
+  grid-template-columns: 130px 1fr 110px;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.84rem;
+}
+
+.ana-bar-label {
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ana-bar-track {
+  background: var(--bg-sunken);
+  border-radius: 6px;
+  height: 16px;
+  overflow: hidden;
+}
+
+.ana-bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.4s ease;
+}
+
+.ana-bar-value {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Monthly trend columns */
+.ana-trend {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 160px;
+  padding: 4px 0 0;
+}
+
+.ana-trend-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+  min-width: 0;
+}
+
+.ana-trend-bar {
+  width: 100%;
+  max-width: 34px;
+  flex: 1;
+  background: var(--bg-sunken);
+  border-radius: 5px 5px 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.ana-trend-delay {
+  display: block;
+  background: var(--status-danger);
+  border-radius: 5px 5px 0 0;
+}
+
+.ana-trend-label {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ── Tables ─────────────────────────────────────────────────────── */
+.ana-table-wrap {
+  overflow-x: auto;
+}
+
+.ana-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+}
+
+.ana-table th {
+  text-align: left;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  padding: 8px 10px;
+  border-bottom: 2px solid var(--border-strong);
+  white-space: nowrap;
+}
+
+.ana-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.ana-table tbody tr:hover td {
+  background: var(--bg-elevated);
+}
+
+/* ── Chips / notes / callouts ───────────────────────────────────── */
+.ana-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.ana-chip {
+  font-size: 0.78rem;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.ana-chip-ok { background: var(--status-success-bg); color: var(--status-success); }
+.ana-chip-neutral { background: var(--status-neutral-bg); color: var(--status-neutral); }
+
+.ana-note {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 8px 0 0;
+}
+
+.ana-callout {
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  font-size: 0.86rem;
+  line-height: 1.5;
+  border: 1px solid;
+}
+
+.ana-callout-warn {
+  background: var(--status-warning-bg);
+  border-color: var(--status-warning);
+  color: var(--text-secondary);
+}
+
+/* ── AOV comparison ─────────────────────────────────────────────── */
+.ana-aov {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 8px 0;
+}
+
+.ana-aov-side {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  flex: 1;
+}
+
+.ana-aov-num {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.ana-aov-bad { color: var(--status-danger); }
+.ana-aov-good { color: var(--status-success); }
+
+.ana-aov-cap {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+.ana-aov-delta {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-sunken);
+  white-space: nowrap;
+}
+
+/* ── Loading / error / empty states ─────────────────────────────── */
+.ana-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 48px 20px;
+  color: var(--text-muted);
+  background: var(--bg-surface);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+}
+
+.ana-state-error {
+  border-color: var(--status-danger);
+  color: var(--status-danger);
+}
+
+.ana-empty-icon {
+  font-size: 1.8rem;
+}
+
+.ana-empty-reason {
+  font-size: 0.82rem;
+}
+
+.ana-definitions {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+.ana-definitions strong {
+  color: var(--text-primary);
+}
+
+@media (max-width: 720px) {
+  .ana-grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .ana-bar-row {
+    grid-template-columns: 90px 1fr 90px;
+  }
+}

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" width="100%" height="100%" style="background:#ffffff; font-family:'Segoe UI', Arial, sans-serif;">
+  <defs>
+    <marker id="sar" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1e293b"/>
+    </marker>
+    <marker id="sret" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+    <marker id="sws" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+  <text x="460" y="28" text-anchor="middle" font-size="17" font-weight="bold" fill="#0f172a">Fig. 3.2 Sequence Diagram — Agent Analysis &amp; WebSocket Fan-Out</text>
+  <rect x="25" y="45" width="105" height="32" rx="6" fill="#3b82f6"/>
+  <text x="77" y="66" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#ffffff">User (SPA)</text>
+  <line x1="77" y1="77" x2="77" y2="500" stroke="#cbd5e1" stroke-dasharray="4,4"/>
+  <rect x="175" y="45" width="115" height="32" rx="6" fill="#0284c7"/>
+  <text x="232" y="66" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#ffffff">FastAPI API</text>
+  <line x1="232" y1="77" x2="232" y2="500" stroke="#cbd5e1" stroke-dasharray="4,4"/>
+  <rect x="330" y="45" width="125" height="32" rx="6" fill="#8b5cf6"/>
+  <text x="392" y="66" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#ffffff">LangGraph Agent</text>
+  <line x1="392" y1="77" x2="392" y2="500" stroke="#cbd5e1" stroke-dasharray="4,4"/>
+  <rect x="495" y="45" width="115" height="32" rx="6" fill="#059669"/>
+  <text x="552" y="66" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#ffffff">PostgreSQL DB</text>
+  <line x1="552" y1="77" x2="552" y2="500" stroke="#cbd5e1" stroke-dasharray="4,4"/>
+  <rect x="650" y="45" width="115" height="32" rx="6" fill="#d97706"/>
+  <text x="707" y="66" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#ffffff">Guarded LLM</text>
+  <line x1="707" y1="77" x2="707" y2="500" stroke="#cbd5e1" stroke-dasharray="4,4"/>
+  <rect x="800" y="45" width="105" height="32" rx="6" fill="#dc2626"/>
+  <text x="852" y="66" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#ffffff">Redis Bus</text>
+  <line x1="852" y1="77" x2="852" y2="500" stroke="#cbd5e1" stroke-dasharray="4,4"/>
+  <rect x="72" y="95" width="10" height="380" fill="#e2e8f0"/>
+  <rect x="227" y="100" width="10" height="365" fill="#bae6fd"/>
+  <rect x="387" y="140" width="10" height="280" fill="#ddd6fe"/>
+  <rect x="547" y="160" width="10" height="55" fill="#a7f3d0"/>
+  <rect x="702" y="235" width="10" height="45" fill="#fde68a"/>
+  <rect x="547" y="360" width="10" height="35" fill="#a7f3d0"/>
+  <rect x="847" y="405" width="10" height="70" fill="#fecaca"/>
+  <line x1="82" y1="105" x2="227" y2="105" stroke="#1e293b" stroke-width="1.8" marker-end="url(#sar)"/>
+  <text x="155" y="98" text-anchor="middle" font-size="10" font-weight="600" fill="#1e293b">1: POST /analyze (JWT)</text>
+  <path d="M 237 120 C 265 115, 265 135, 237 137" stroke="#0284c7" stroke-width="1.5" fill="none" marker-end="url(#sar)"/>
+  <text x="270" y="130" font-size="9.5" fill="#0369a1">2: Verify RBAC</text>
+  <line x1="237" y1="145" x2="387" y2="145" stroke="#1e293b" stroke-width="1.8" marker-end="url(#sar)"/>
+  <text x="310" y="138" text-anchor="middle" font-size="10" font-weight="600" fill="#1e293b">3: run_analysis(exec_id)</text>
+  <line x1="397" y1="165" x2="547" y2="165" stroke="#1e293b" stroke-width="1.8" marker-end="url(#sar)"/>
+  <text x="470" y="158" text-anchor="middle" font-size="10" font-weight="600" fill="#1e293b">4: SELECT orders WHERE ts &lt;= T</text>
+  <line x1="547" y1="205" x2="397" y2="205" stroke="#64748b" stroke-width="1.4" stroke-dasharray="4,3" marker-end="url(#sret)"/>
+  <text x="470" y="198" text-anchor="middle" font-size="9.5" fill="#475569">5: Return Raw Telemetry Data</text>
+  <line x1="397" y1="240" x2="702" y2="240" stroke="#1e293b" stroke-width="1.8" marker-end="url(#sar)"/>
+  <text x="550" y="233" text-anchor="middle" font-size="10" font-weight="600" fill="#1e293b">6: Triage Intent &amp; Extract Entities</text>
+  <line x1="702" y1="275" x2="397" y2="275" stroke="#64748b" stroke-width="1.4" stroke-dasharray="4,3" marker-end="url(#sret)"/>
+  <text x="550" y="268" text-anchor="middle" font-size="9.5" fill="#475569">7: Structured Plan &amp; Parameters</text>
+  <path d="M 397 300 C 435 290, 435 330, 397 335" stroke="#8b5cf6" stroke-width="1.8" fill="none" marker-end="url(#sar)"/>
+  <text x="440" y="315" font-size="9.5" font-weight="bold" fill="#6d28d9">8: Compute Z-Score, MAD,</text>
+  <text x="440" y="330" font-size="9.5" font-weight="bold" fill="#6d28d9">Tukey Fences &amp; ROP/EOQ</text>
+  <line x1="397" y1="365" x2="547" y2="365" stroke="#1e293b" stroke-width="1.8" marker-end="url(#sar)"/>
+  <text x="470" y="358" text-anchor="middle" font-size="10" font-weight="600" fill="#1e293b">9: INSERT agent_runs, findings</text>
+  <line x1="397" y1="410" x2="847" y2="410" stroke="#dc2626" stroke-width="1.8" marker-end="url(#sar)"/>
+  <text x="620" y="403" text-anchor="middle" font-size="10" font-weight="600" fill="#b91c1c">10: PUBLISH commerceos:events</text>
+  <line x1="387" y1="430" x2="237" y2="430" stroke="#64748b" stroke-width="1.4" stroke-dasharray="4,3" marker-end="url(#sret)"/>
+  <text x="310" y="423" text-anchor="middle" font-size="9.5" fill="#475569">11: Return Agent Snapshot</text>
+  <line x1="227" y1="455" x2="82" y2="455" stroke="#16a34a" stroke-width="1.8" stroke-dasharray="4,3" marker-end="url(#sar)"/>
+  <text x="155" y="448" text-anchor="middle" font-size="10" font-weight="bold" fill="#15803d">12: 200 OK + Findings JSON</text>
+  <path d="M 847 470 C 780 490, 240 500, 82 480" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#sws)"/>
+  <text x="460" y="495" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#1d4ed8">13: WebSocket Live Stream Push to Connected Clients</text>
+</svg>

@@ -1,5 +1,10 @@
 @echo off
 title Orders Agent Backend
 echo Starting Orders Agent Backend...
-"C:\Users\A Shrinivas\AppData\Local\Python\pythoncore-3.11-64\python.exe" run_backend.py
+where python >nul 2>nul
+if %errorlevel%==0 (
+    python run_backend.py
+) else (
+    py run_backend.py
+)
 pause

@@ -234,7 +234,10 @@ def seed_data(db: Session = None, olist_limit: int = 25000, dataco_limit: int = 
         # 4. Ingest Olist Order Items
         items_path = find_dataset("olist_order_items_dataset.csv")
         logger.info(f"Loading order items from {items_path}...")
-        df_items = pd.read_csv(items_path, nrows=olist_limit * 4)
+        # Read the FULL file (no nrows): rows are filtered to known orders below,
+        # and a row cap silently truncates the tail, leaving later orders without
+        # item/price rows — which skews any order-value analytics downstream.
+        df_items = pd.read_csv(items_path)
         df_items["shipping_limit_date"] = pd.to_datetime(df_items["shipping_limit_date"], errors="coerce")
 
         existing_items = set((r[0], r[1]) for r in db.query(OrderItem.order_id, OrderItem.order_item_id).all())
@@ -302,7 +305,7 @@ def seed_data(db: Session = None, olist_limit: int = 25000, dataco_limit: int = 
             from app.models.olist import OrderPayment
 
             pay_path = find_dataset("olist_order_payments_dataset.csv")
-            df_pay = pd.read_csv(pay_path, nrows=olist_limit * 3)
+            df_pay = pd.read_csv(pay_path)
             valid_orders = set(r[0] for r in db.query(Order.order_id).all())
             existing_pay = set((r[0], r[1]) for r in db.query(OrderPayment.order_id, OrderPayment.payment_sequential).all())
             pay_records = []

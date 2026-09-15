@@ -40,6 +40,10 @@ export const API_ENDPOINTS = {
     run: `${API_BASE_URL}/api/v1/orchestrator/run`,
     latest: `${API_BASE_URL}/api/v1/orchestrator/latest`,
   },
+  analytics: {
+    sla: `${API_BASE_URL}/api/v1/analytics/sla`,
+    impact: `${API_BASE_URL}/api/v1/analytics/impact`,
+  },
   system: {
     llm: `${API_BASE_URL}/api/v1/system/llm`,
     status: `${API_BASE_URL}/api/v1/system/status`,
