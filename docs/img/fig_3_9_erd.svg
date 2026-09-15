@@ -1,402 +1,171 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 760" width="100%" height="100%" style="background:#ffffff; font-family:'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" width="100%" height="100%" style="background:#ffffff; font-family:'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;">
   <defs>
-    <!-- Card Shadow -->
-    <filter id="erShadow" x="-3%" y="-3%" width="106%" height="108%">
-      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.08"/>
-      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#0f172a" flood-opacity="0.04"/>
-    </filter>
-    <filter id="coreGlow" x="-5%" y="-5%" width="110%" height="110%">
-      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#2563eb" flood-opacity="0.2"/>
-    </filter>
-    
-    <!-- Arrow Marker -->
-    <marker id="erArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <marker id="er_arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
       <path d="M 0 1 L 9 5 L 0 9 z" fill="#2563eb"/>
     </marker>
+    <filter id="shadow" x="-3%" y="-3%" width="106%" height="108%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+    </filter>
   </defs>
 
-  <!-- Title Banner -->
-  <text x="530" y="32" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">Fig. 3.9 Entity-Relationship (ER) Diagram — CommerceOS Operational Schema</text>
-  <text x="530" y="50" text-anchor="middle" font-size="11" fill="#64748b">Relational Database Models: Commercial Operations &amp; Immutable Audit Ledger</text>
+  <text x="500" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#0f172a">Fig. 3.9 Entity-Relationship (ER) Diagram — CommerceOS Operational Schema</text>
 
-  <!-- ============================================================== -->
-  <!-- ROW 1: COMMERCIAL ENTITIES -->
-  <!-- ============================================================== -->
-
-  <!-- Table 1: users -->
-  <g transform="translate(40, 70)" filter="url(#erShadow)">
-    <rect x="0" y="0" width="230" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
-    <rect x="0" y="0" width="230" height="30" rx="8" fill="#1e293b"/>
-    <rect x="0" y="16" width="230" height="14" fill="#1e293b"/>
-    <text x="16" y="20" font-size="11.5" font-weight="700" fill="#ffffff">users</text>
-    <text x="214" y="20" text-anchor="end" font-size="9.5" fill="#94a3b8">Auth / RBAC</text>
-
-    <!-- Row 1 -->
-    <rect x="1" y="31" width="228" height="28" fill="#ffffff"/>
-    <rect x="12" y="37" width="24" height="16" rx="3" fill="#eff6ff" stroke="#3b82f6" stroke-width="1"/>
-    <text x="24" y="49" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1d4ed8">PK</text>
-    <text x="44" y="49" font-size="11" font-weight="600" fill="#0f172a">id</text>
-    <text x="214" y="49" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">VARCHAR(36)</text>
-    <line x1="10" y1="59" x2="220" y2="59" stroke="#f1f5f9" stroke-width="1"/>
-
-    <!-- Row 2 -->
-    <rect x="1" y="60" width="228" height="28" fill="#f8fafc"/>
-    <circle cx="24" cy="74" r="3" fill="#94a3b8"/>
-    <text x="44" y="78" font-size="11" fill="#0f172a">username</text>
-    <text x="214" y="78" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">VARCHAR(100)</text>
-    <line x1="10" y1="88" x2="220" y2="88" stroke="#f1f5f9" stroke-width="1"/>
-
-    <!-- Row 3 -->
-    <rect x="1" y="89" width="228" height="28" fill="#ffffff"/>
-    <circle cx="24" cy="103" r="3" fill="#94a3b8"/>
-    <text x="44" y="107" font-size="11" fill="#0f172a">hashed_password</text>
-    <text x="214" y="107" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">VARCHAR(255)</text>
-    <line x1="10" y1="117" x2="220" y2="117" stroke="#f1f5f9" stroke-width="1"/>
-
-    <!-- Row 4 -->
-    <rect x="1" y="118" width="228" height="28" fill="#f8fafc"/>
-    <circle cx="24" cy="132" r="3" fill="#94a3b8"/>
-    <text x="44" y="136" font-size="11" fill="#0f172a">role</text>
-    <text x="214" y="136" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">VARCHAR(30)</text>
+  <!-- Row 1: Commercial Domain -->
+  <!-- users -->
+  <g transform="translate(40, 60)" filter="url(#shadow)">
+    <rect x="0" y="0" width="190" height="150" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.4"/>
+    <rect x="0" y="0" width="190" height="28" rx="6" fill="#1e293b"/>
+    <rect x="0" y="14" width="190" height="14" fill="#1e293b"/>
+    <text x="95" y="19" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#ffffff">users</text>
+    <text x="12" y="46" font-size="9.5" font-weight="bold" fill="#2563eb">PK  id: VARCHAR(36)</text>
+    <text x="12" y="66" font-size="9.5" fill="#334155">    username: VARCHAR(100)</text>
+    <text x="12" y="86" font-size="9.5" fill="#334155">    email: VARCHAR(255)</text>
+    <text x="12" y="106" font-size="9.5" fill="#334155">    hashed_password: VARCHAR</text>
+    <text x="12" y="126" font-size="9.5" fill="#334155">    role: UserRole Enum</text>
+    <text x="12" y="142" font-size="9.5" fill="#334155">    is_active: BOOLEAN</text>
   </g>
 
-  <!-- Table 2: orders (PROMINENT CENTER CARD) -->
-  <g transform="translate(370, 60)" filter="url(#coreGlow)">
-    <rect x="0" y="0" width="310" height="200" rx="10" fill="#ffffff" stroke="#2563eb" stroke-width="2.5"/>
-    <rect x="0" y="0" width="310" height="34" rx="10" fill="#2563eb"/>
-    <rect x="0" y="18" width="310" height="16" fill="#2563eb"/>
-    <text x="16" y="22" font-size="13" font-weight="700" fill="#ffffff">Table 2: orders [Core Engine]</text>
-    <text x="294" y="22" text-anchor="end" font-size="10" font-weight="600" fill="#bfdbfe">100,000+ Records</text>
-
-    <!-- Row 1: PK order_id -->
-    <rect x="2" y="36" width="306" height="26" fill="#eff6ff"/>
-    <rect x="14" y="41" width="26" height="16" rx="3" fill="#dbeafe" stroke="#2563eb" stroke-width="1"/>
-    <text x="27" y="53" text-anchor="middle" font-size="9" font-weight="700" fill="#1d4ed8">PK</text>
-    <text x="48" y="53" font-size="11.5" font-weight="700" fill="#1e40af">order_id</text>
-    <text x="294" y="53" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#1e40af">VARCHAR(50)</text>
-    <line x1="12" y1="62" x2="298" y2="62" stroke="#e2e8f0" stroke-width="1"/>
-
-    <!-- Row 2: customer_id -->
-    <rect x="2" y="63" width="306" height="26" fill="#ffffff"/>
-    <circle cx="27" cy="76" r="3" fill="#64748b"/>
-    <text x="48" y="80" font-size="11" font-weight="600" fill="#0f172a">customer_id</text>
-    <text x="294" y="80" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">VARCHAR(50)</text>
-    <line x1="12" y1="89" x2="298" y2="89" stroke="#e2e8f0" stroke-width="1"/>
-
-    <!-- Row 3: order_status -->
-    <rect x="2" y="90" width="306" height="26" fill="#f8fafc"/>
-    <circle cx="27" cy="103" r="3" fill="#64748b"/>
-    <text x="48" y="107" font-size="11" fill="#0f172a">order_status</text>
-    <text x="294" y="107" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">VARCHAR(30)</text>
-    <line x1="12" y1="116" x2="298" y2="116" stroke="#e2e8f0" stroke-width="1"/>
-
-    <!-- Row 4: order_purchase_timestamp -->
-    <rect x="2" y="117" width="306" height="26" fill="#ffffff"/>
-    <circle cx="27" cy="130" r="3" fill="#2563eb"/>
-    <text x="48" y="134" font-size="11" font-weight="600" fill="#0f172a">purchase_timestamp</text>
-    <text x="294" y="134" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">DATETIME [T Index]</text>
-    <line x1="12" y1="143" x2="298" y2="143" stroke="#e2e8f0" stroke-width="1"/>
-
-    <!-- Row 5: order_estimated_delivery -->
-    <rect x="2" y="144" width="306" height="26" fill="#f8fafc"/>
-    <circle cx="27" cy="157" r="3" fill="#64748b"/>
-    <text x="48" y="161" font-size="11" fill="#0f172a">estimated_delivery</text>
-    <text x="294" y="161" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">DATETIME [SLA]</text>
-    <line x1="12" y1="170" x2="298" y2="170" stroke="#e2e8f0" stroke-width="1"/>
-
-    <!-- Row 6: order_delivered_customer -->
-    <rect x="2" y="171" width="306" height="26" fill="#ffffff"/>
-    <circle cx="27" cy="184" r="3" fill="#64748b"/>
-    <text x="48" y="188" font-size="11" fill="#0f172a">delivered_customer</text>
-    <text x="294" y="188" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">DATETIME</text>
+  <!-- orders -->
+  <g transform="translate(280, 55)" filter="url(#shadow)">
+    <rect x="0" y="0" width="200" height="165" rx="6" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+    <rect x="0" y="0" width="200" height="28" rx="6" fill="#2563eb"/>
+    <rect x="0" y="14" width="200" height="14" fill="#2563eb"/>
+    <text x="100" y="19" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#ffffff">orders</text>
+    <text x="12" y="46" font-size="9.5" font-weight="bold" fill="#1d4ed8">PK  order_id: VARCHAR(50)</text>
+    <text x="12" y="64" font-size="9.5" fill="#059669">FK  customer_id: VARCHAR(50)</text>
+    <text x="12" y="82" font-size="9.5" fill="#059669">FK  user_id: VARCHAR(36)</text>
+    <text x="12" y="100" font-size="9.5" fill="#334155">    order_status: VARCHAR(30)</text>
+    <text x="12" y="118" font-size="9.5" fill="#334155">    order_purchase_ts: DATETIME</text>
+    <text x="12" y="136" font-size="9.5" fill="#334155">    order_delivered_date: DATETIME</text>
+    <text x="12" y="152" font-size="9.5" fill="#334155">    estimated_delivery: DATETIME</text>
+    <text x="12" y="165" font-size="9.5" fill="#334155">    total_amount: FLOAT</text>
   </g>
 
-  <!-- Table 3: order_items -->
-  <g transform="translate(780, 70)" filter="url(#erShadow)">
-    <rect x="0" y="0" width="240" height="175" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
-    <rect x="0" y="0" width="240" height="30" rx="8" fill="#1e293b"/>
-    <rect x="0" y="16" width="240" height="14" fill="#1e293b"/>
-    <text x="16" y="20" font-size="11.5" font-weight="700" fill="#ffffff">order_items</text>
-    <text x="224" y="20" text-anchor="end" font-size="9.5" fill="#94a3b8">Line Items</text>
-
-    <!-- Row 1 -->
-    <rect x="1" y="31" width="238" height="28" fill="#ffffff"/>
-    <rect x="12" y="37" width="24" height="16" rx="3" fill="#eff6ff" stroke="#3b82f6" stroke-width="1"/>
-    <text x="24" y="49" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1d4ed8">PK</text>
-    <text x="44" y="49" font-size="11" font-weight="600" fill="#0f172a">id</text>
-    <text x="224" y="49" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">INTEGER</text>
-    <line x1="10" y1="59" x2="230" y2="59" stroke="#f1f5f9" stroke-width="1"/>
-
-    <!-- Row 2 -->
-    <rect x="1" y="60" width="238" height="28" fill="#f0fdf4"/>
-    <rect x="12" y="66" width="24" height="16" rx="3" fill="#dcfce7" stroke="#16a34a" stroke-width="1"/>
-    <text x="24" y="78" text-anchor="middle" font-size="8.5" font-weight="700" fill="#15803d">FK</text>
-    <text x="44" y="78" font-size="11" font-weight="600" fill="#15803d">order_id</text>
-    <text x="224" y="78" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#15803d">VARCHAR(50)</text>
-    <line x1="10" y1="88" x2="230" y2="88" stroke="#f1f5f9" stroke-width="1"/>
-
-    <!-- Row 3 -->
-    <rect x="1" y="89" width="238" height="28" fill="#f0fdf4"/>
-    <rect x="12" y="95" width="24" height="16" rx="3" fill="#dcfce7" stroke="#16a34a" stroke-width="1"/>
-    <text x="24" y="107" text-anchor="middle" font-size="8.5" font-weight="700" fill="#15803d">FK</text>
-    <text x="44" y="107" font-size="11" font-weight="600" fill="#15803d">product_id</text>
-    <text x="224" y="107" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#15803d">VARCHAR(50)</text>
-    <line x1="10" y1="117" x2="230" y2="117" stroke="#f1f5f9" stroke-width="1"/>
-
-    <!-- Row 4 -->
-    <rect x="1" y="118" width="238" height="28" fill="#ffffff"/>
-    <circle cx="24" cy="132" r="3" fill="#94a3b8"/>
-    <text x="44" y="136" font-size="11" fill="#0f172a">price</text>
-    <text x="224" y="136" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">FLOAT</text>
-    <line x1="10" y1="146" x2="230" y2="146" stroke="#f1f5f9" stroke-width="1"/>
-
-    <!-- Row 5 -->
-    <rect x="1" y="147" width="238" height="26" fill="#f8fafc"/>
-    <circle cx="24" cy="160" r="3" fill="#94a3b8"/>
-    <text x="44" y="164" font-size="11" fill="#0f172a">freight_value</text>
-    <text x="224" y="164" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">FLOAT</text>
+  <!-- order_items -->
+  <g transform="translate(530, 60)" filter="url(#shadow)">
+    <rect x="0" y="0" width="190" height="150" rx="6" fill="#ffffff" stroke="#2563eb" stroke-width="1.4"/>
+    <rect x="0" y="0" width="190" height="28" rx="6" fill="#2563eb"/>
+    <rect x="0" y="14" width="190" height="14" fill="#2563eb"/>
+    <text x="95" y="19" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#ffffff">order_items</text>
+    <text x="12" y="46" font-size="9.5" font-weight="bold" fill="#1d4ed8">PK  id: INTEGER (AUTO)</text>
+    <text x="12" y="66" font-size="9.5" fill="#059669">FK  order_id: VARCHAR(50)</text>
+    <text x="12" y="86" font-size="9.5" fill="#059669">FK  product_id: VARCHAR(50)</text>
+    <text x="12" y="106" font-size="9.5" fill="#334155">    seller_id: VARCHAR(50)</text>
+    <text x="12" y="126" font-size="9.5" fill="#334155">    price: FLOAT</text>
+    <text x="12" y="142" font-size="9.5" fill="#334155">    freight_value: FLOAT</text>
   </g>
 
-  <!-- ============================================================== -->
-  <!-- ROW 2: AGENT DIAGNOSTICS & MASTER CATALOG -->
-  <!-- ============================================================== -->
-
-  <!-- Table 5: agent_runs -->
-  <g transform="translate(40, 310)" filter="url(#erShadow)">
-    <rect x="0" y="0" width="230" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
-    <rect x="0" y="0" width="230" height="30" rx="8" fill="#1e293b"/>
-    <rect x="0" y="16" width="230" height="14" fill="#1e293b"/>
-    <text x="16" y="20" font-size="11.5" font-weight="700" fill="#ffffff">agent_runs</text>
-    <text x="214" y="20" text-anchor="end" font-size="9.5" fill="#94a3b8">Execution Log</text>
-
-    <!-- Row 1 -->
-    <rect x="1" y="31" width="228" height="28" fill="#ffffff"/>
-    <rect x="12" y="37" width="24" height="16" rx="3" fill="#eff6ff" stroke="#3b82f6" stroke-width="1"/>
-    <text x="24" y="49" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1d4ed8">PK</text>
-    <text x="44" y="49" font-size="11" font-weight="600" fill="#0f172a">id</text>
-    <text x="214" y="49" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">VARCHAR(36)</text>
-    <line x1="10" y1="59" x2="220" y2="59" stroke="#f1f5f9" stroke-width="1"/>
-
-    <!-- Row 2 -->
-    <rect x="1" y="60" width="228" height="28" fill="#f8fafc"/>
-    <circle cx="24" cy="74" r="3" fill="#94a3b8"/>
-    <text x="44" y="78" font-size="11" font-weight="600" fill="#0f172a">agent</text>
-    <text x="214" y="78" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">VARCHAR(40)</text>
-    <line x1="10" y1="88" x2="220" y2="88" stroke="#f1f5f9" stroke-width="1"/>
-
-    <!-- Row 3 -->
-    <rect x="1" y="89" width="228" height="28" fill="#ffffff"/>
-    <circle cx="24" cy="103" r="3" fill="#94a3b8"/>
-    <text x="44" y="107" font-size="11" fill="#0f172a">status</text>
-    <text x="214" y="107" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">VARCHAR(24)</text>
-    <line x1="10" y1="117" x2="220" y2="117" stroke="#f1f5f9" stroke-width="1"/>
-
-    <!-- Row 4 -->
-    <rect x="1" y="118" width="228" height="28" fill="#f8fafc"/>
-    <circle cx="24" cy="132" r="3" fill="#94a3b8"/>
-    <text x="44" y="136" font-size="11" fill="#0f172a">created_at</text>
-    <text x="214" y="136" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">DATETIME</text>
+  <!-- products -->
+  <g transform="translate(770, 60)" filter="url(#shadow)">
+    <rect x="0" y="0" width="190" height="150" rx="6" fill="#ffffff" stroke="#16a34a" stroke-width="1.4"/>
+    <rect x="0" y="0" width="190" height="28" rx="6" fill="#16a34a"/>
+    <rect x="0" y="14" width="190" height="14" fill="#16a34a"/>
+    <text x="95" y="19" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#ffffff">products</text>
+    <text x="12" y="46" font-size="9.5" font-weight="bold" fill="#15803d">PK  product_id: VARCHAR(50)</text>
+    <text x="12" y="66" font-size="9.5" fill="#334155">    category: VARCHAR(60)</text>
+    <text x="12" y="86" font-size="9.5" fill="#334155">    product_weight_g: FLOAT</text>
+    <text x="12" y="106" font-size="9.5" fill="#334155">    current_stock: INTEGER</text>
+    <text x="12" y="126" font-size="9.5" fill="#334155">    reorder_point: INTEGER</text>
+    <text x="12" y="142" font-size="9.5" fill="#334155">    safety_stock: INTEGER</text>
   </g>
 
-  <!-- Table 6: agent_findings -->
-  <g transform="translate(370, 310)" filter="url(#erShadow)">
-    <rect x="0" y="0" width="310" height="175" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
-    <rect x="0" y="0" width="310" height="30" rx="8" fill="#1e293b"/>
-    <rect x="0" y="16" width="310" height="14" fill="#1e293b"/>
-    <text x="16" y="20" font-size="11.5" font-weight="700" fill="#ffffff">agent_findings</text>
-    <text x="294" y="20" text-anchor="end" font-size="9.5" fill="#94a3b8">Diagnostic Events</text>
+  <!-- Row 1 Connectors -->
+  <!-- users -> orders -->
+  <line x1="230" y1="130" x2="278" y2="130" stroke="#2563eb" stroke-width="1.8" marker-end="url(#er_arr)"/>
+  <rect x="238" y="120" width="30" height="18" rx="3" fill="#ffffff" stroke="#2563eb" stroke-width="1"/>
+  <text x="253" y="132" text-anchor="middle" font-size="9" font-weight="bold" fill="#1e40af">1 : N</text>
 
-    <!-- Row 1 -->
-    <rect x="1" y="31" width="308" height="28" fill="#ffffff"/>
-    <rect x="14" y="37" width="24" height="16" rx="3" fill="#eff6ff" stroke="#3b82f6" stroke-width="1"/>
-    <text x="26" y="49" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1d4ed8">PK</text>
-    <text x="46" y="49" font-size="11" font-weight="600" fill="#0f172a">id</text>
-    <text x="294" y="49" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">VARCHAR(36)</text>
-    <line x1="12" y1="59" x2="298" y2="59" stroke="#f1f5f9" stroke-width="1"/>
+  <!-- orders -> order_items -->
+  <line x1="480" y1="130" x2="528" y2="130" stroke="#2563eb" stroke-width="1.8" marker-end="url(#er_arr)"/>
+  <rect x="488" y="120" width="30" height="18" rx="3" fill="#ffffff" stroke="#2563eb" stroke-width="1"/>
+  <text x="503" y="132" text-anchor="middle" font-size="9" font-weight="bold" fill="#1e40af">1 : N</text>
 
-    <!-- Row 2 -->
-    <rect x="1" y="60" width="308" height="28" fill="#f0fdf4"/>
-    <rect x="14" y="66" width="24" height="16" rx="3" fill="#dcfce7" stroke="#16a34a" stroke-width="1"/>
-    <text x="26" y="78" text-anchor="middle" font-size="8.5" font-weight="700" fill="#15803d">FK</text>
-    <text x="46" y="78" font-size="11" font-weight="600" fill="#15803d">run_id</text>
-    <text x="294" y="78" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#15803d">VARCHAR(36)</text>
-    <line x1="12" y1="88" x2="298" y2="88" stroke="#f1f5f9" stroke-width="1"/>
+  <!-- products -> order_items -->
+  <line x1="770" y1="130" x2="722" y2="130" stroke="#2563eb" stroke-width="1.8" marker-end="url(#er_arr)"/>
+  <rect x="732" y="120" width="30" height="18" rx="3" fill="#ffffff" stroke="#2563eb" stroke-width="1"/>
+  <text x="747" y="132" text-anchor="middle" font-size="9" font-weight="bold" fill="#1e40af">N : 1</text>
 
-    <!-- Row 3 -->
-    <rect x="1" y="89" width="308" height="28" fill="#ffffff"/>
-    <circle cx="26" cy="103" r="3" fill="#94a3b8"/>
-    <text x="46" y="107" font-size="11" fill="#0f172a">category</text>
-    <text x="294" y="107" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">VARCHAR(60)</text>
-    <line x1="12" y1="117" x2="298" y2="117" stroke="#f1f5f9" stroke-width="1"/>
-
-    <!-- Row 4 -->
-    <rect x="1" y="118" width="308" height="28" fill="#f8fafc"/>
-    <circle cx="26" cy="132" r="3" fill="#94a3b8"/>
-    <text x="46" y="136" font-size="11" fill="#0f172a">severity</text>
-    <text x="294" y="136" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">VARCHAR(16)</text>
-    <line x1="12" y1="146" x2="298" y2="146" stroke="#f1f5f9" stroke-width="1"/>
-
-    <!-- Row 5 -->
-    <rect x="1" y="147" width="308" height="26" fill="#ffffff"/>
-    <circle cx="26" cy="160" r="3" fill="#94a3b8"/>
-    <text x="46" y="164" font-size="11" fill="#0f172a">confidence</text>
-    <text x="294" y="164" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">FLOAT [0.0 - 1.0]</text>
+  <!-- Row 2: Operational Ledger -->
+  <!-- agent_runs -->
+  <g transform="translate(40, 310)" filter="url(#shadow)">
+    <rect x="0" y="0" width="190" height="165" rx="6" fill="#ffffff" stroke="#7c3aed" stroke-width="1.4"/>
+    <rect x="0" y="0" width="190" height="28" rx="6" fill="#7c3aed"/>
+    <rect x="0" y="14" width="190" height="14" fill="#7c3aed"/>
+    <text x="95" y="19" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#ffffff">agent_runs</text>
+    <text x="12" y="46" font-size="9.5" font-weight="bold" fill="#6d28d9">PK  id: VARCHAR(36)</text>
+    <text x="12" y="66" font-size="9.5" fill="#334155">    agent: VARCHAR(40)</text>
+    <text x="12" y="86" font-size="9.5" fill="#334155">    trigger: VARCHAR(24)</text>
+    <text x="12" y="106" font-size="9.5" fill="#334155">    status: VARCHAR(24)</text>
+    <text x="12" y="126" font-size="9.5" fill="#334155">    health: VARCHAR(24)</text>
+    <text x="12" y="144" font-size="9.5" fill="#334155">    confidence: FLOAT</text>
+    <text x="12" y="160" font-size="9.5" fill="#334155">    started_at: DATETIME</text>
   </g>
 
-  <!-- Table 4: products -->
-  <g transform="translate(780, 310)" filter="url(#erShadow)">
-    <rect x="0" y="0" width="240" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
-    <rect x="0" y="0" width="240" height="30" rx="8" fill="#1e293b"/>
-    <rect x="0" y="16" width="240" height="14" fill="#1e293b"/>
-    <text x="16" y="20" font-size="11.5" font-weight="700" fill="#ffffff">products</text>
-    <text x="224" y="20" text-anchor="end" font-size="9.5" fill="#94a3b8">Catalog &amp; Stock</text>
-
-    <!-- Row 1 -->
-    <rect x="1" y="31" width="238" height="28" fill="#ffffff"/>
-    <rect x="12" y="37" width="24" height="16" rx="3" fill="#eff6ff" stroke="#3b82f6" stroke-width="1"/>
-    <text x="24" y="49" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1d4ed8">PK</text>
-    <text x="44" y="49" font-size="11" font-weight="600" fill="#0f172a">product_id</text>
-    <text x="224" y="49" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">VARCHAR(50)</text>
-    <line x1="10" y1="59" x2="230" y2="59" stroke="#f1f5f9" stroke-width="1"/>
-
-    <!-- Row 2 -->
-    <rect x="1" y="60" width="238" height="28" fill="#f8fafc"/>
-    <circle cx="24" cy="74" r="3" fill="#94a3b8"/>
-    <text x="44" y="78" font-size="11" fill="#0f172a">category_name</text>
-    <text x="224" y="78" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">VARCHAR(100)</text>
-    <line x1="10" y1="88" x2="230" y2="88" stroke="#f1f5f9" stroke-width="1"/>
-
-    <!-- Row 3 -->
-    <rect x="1" y="89" width="238" height="28" fill="#ffffff"/>
-    <circle cx="24" cy="103" r="3" fill="#94a3b8"/>
-    <text x="44" y="107" font-size="11" font-weight="600" fill="#0f172a">current_stock</text>
-    <text x="224" y="107" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">INTEGER</text>
-    <line x1="10" y1="117" x2="230" y2="117" stroke="#f1f5f9" stroke-width="1"/>
-
-    <!-- Row 4 -->
-    <rect x="1" y="118" width="238" height="28" fill="#f8fafc"/>
-    <circle cx="24" cy="132" r="3" fill="#94a3b8"/>
-    <text x="44" y="136" font-size="11" font-weight="600" fill="#0f172a">reorder_point</text>
-    <text x="224" y="136" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">INTEGER [ROP]</text>
+  <!-- agent_findings -->
+  <g transform="translate(280, 310)" filter="url(#shadow)">
+    <rect x="0" y="0" width="200" height="165" rx="6" fill="#ffffff" stroke="#dc2626" stroke-width="1.4"/>
+    <rect x="0" y="0" width="200" height="28" rx="6" fill="#dc2626"/>
+    <rect x="0" y="14" width="200" height="14" fill="#dc2626"/>
+    <text x="100" y="19" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#ffffff">agent_findings</text>
+    <text x="12" y="46" font-size="9.5" font-weight="bold" fill="#b91c1c">PK  id: VARCHAR(36)</text>
+    <text x="12" y="66" font-size="9.5" fill="#059669">FK  run_id: VARCHAR(36)</text>
+    <text x="12" y="86" font-size="9.5" fill="#334155">    agent: VARCHAR(40)</text>
+    <text x="12" y="106" font-size="9.5" fill="#334155">    category: VARCHAR(60)</text>
+    <text x="12" y="126" font-size="9.5" fill="#334155">    severity: VARCHAR(16)</text>
+    <text x="12" y="144" font-size="9.5" fill="#334155">    title: VARCHAR(300)</text>
+    <text x="12" y="156" font-size="9.5" fill="#334155">    confidence: FLOAT</text>
+    <text x="12" y="166" font-size="8.5" fill="#64748b">    data_status: VARCHAR(24)</text>
   </g>
 
-  <!-- ============================================================== -->
-  <!-- ROW 3: ORCHESTRATION & HITL ACTIONS -->
-  <!-- ============================================================== -->
-
-  <!-- Table 7: orchestration_decisions -->
-  <g transform="translate(180, 545)" filter="url(#erShadow)">
-    <rect x="0" y="0" width="290" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
-    <rect x="0" y="0" width="290" height="30" rx="8" fill="#1e293b"/>
-    <rect x="0" y="16" width="290" height="14" fill="#1e293b"/>
-    <text x="16" y="20" font-size="11.5" font-weight="700" fill="#ffffff">orchestration_decisions</text>
-    <text x="274" y="20" text-anchor="end" font-size="9.5" fill="#94a3b8">Global Score</text>
-
-    <!-- Row 1 -->
-    <rect x="1" y="31" width="288" height="28" fill="#ffffff"/>
-    <rect x="12" y="37" width="24" height="16" rx="3" fill="#eff6ff" stroke="#3b82f6" stroke-width="1"/>
-    <text x="24" y="49" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1d4ed8">PK</text>
-    <text x="44" y="49" font-size="11" font-weight="600" fill="#0f172a">id</text>
-    <text x="274" y="49" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">VARCHAR(36)</text>
-    <line x1="10" y1="59" x2="280" y2="59" stroke="#f1f5f9" stroke-width="1"/>
-
-    <!-- Row 2 -->
-    <rect x="1" y="60" width="288" height="28" fill="#f8fafc"/>
-    <circle cx="24" cy="74" r="3" fill="#94a3b8"/>
-    <text x="44" y="78" font-size="11" font-weight="600" fill="#0f172a">health_score</text>
-    <text x="274" y="78" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">INTEGER [0 - 100]</text>
-    <line x1="10" y1="88" x2="280" y2="88" stroke="#f1f5f9" stroke-width="1"/>
-
-    <!-- Row 3 -->
-    <rect x="1" y="89" width="288" height="28" fill="#ffffff"/>
-    <circle cx="24" cy="103" r="3" fill="#94a3b8"/>
-    <text x="44" y="107" font-size="11" fill="#0f172a">primary_bottleneck</text>
-    <text x="274" y="107" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">VARCHAR(60)</text>
-    <line x1="10" y1="117" x2="280" y2="117" stroke="#f1f5f9" stroke-width="1"/>
-
-    <!-- Row 4 -->
-    <rect x="1" y="118" width="288" height="28" fill="#f8fafc"/>
-    <circle cx="24" cy="132" r="3" fill="#94a3b8"/>
-    <text x="44" y="136" font-size="11" fill="#0f172a">created_at</text>
-    <text x="274" y="136" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">DATETIME</text>
+  <!-- orchestration_decisions -->
+  <g transform="translate(530, 310)" filter="url(#shadow)">
+    <rect x="0" y="0" width="190" height="165" rx="6" fill="#ffffff" stroke="#d97706" stroke-width="1.4"/>
+    <rect x="0" y="0" width="190" height="28" rx="6" fill="#d97706"/>
+    <rect x="0" y="14" width="190" height="14" fill="#d97706"/>
+    <text x="95" y="19" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#ffffff">orchestration_decisions</text>
+    <text x="12" y="46" font-size="9.5" font-weight="bold" fill="#92400e">PK  id: VARCHAR(36)</text>
+    <text x="12" y="66" font-size="9.5" fill="#334155">    execution_id: VARCHAR(60)</text>
+    <text x="12" y="86" font-size="9.5" fill="#334155">    overall_health: VARCHAR(24)</text>
+    <text x="12" y="106" font-size="9.5" fill="#334155">    domains: JSON</text>
+    <text x="12" y="126" font-size="9.5" fill="#334155">    systemic_findings: JSON</text>
+    <text x="12" y="144" font-size="9.5" fill="#334155">    conflicts: JSON</text>
+    <text x="12" y="160" font-size="9.5" fill="#334155">    created_at: DATETIME</text>
   </g>
 
-  <!-- Table 8: automation_actions -->
-  <g transform="translate(580, 545)" filter="url(#erShadow)">
-    <rect x="0" y="0" width="310" height="175" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2"/>
-    <rect x="0" y="0" width="310" height="30" rx="8" fill="#1e293b"/>
-    <rect x="0" y="16" width="310" height="14" fill="#1e293b"/>
-    <text x="16" y="20" font-size="11.5" font-weight="700" fill="#ffffff">automation_actions</text>
-    <text x="294" y="20" text-anchor="end" font-size="9.5" fill="#94a3b8">HITL Dispatch</text>
-
-    <!-- Row 1 -->
-    <rect x="1" y="31" width="308" height="28" fill="#ffffff"/>
-    <rect x="14" y="37" width="24" height="16" rx="3" fill="#eff6ff" stroke="#3b82f6" stroke-width="1"/>
-    <text x="26" y="49" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1d4ed8">PK</text>
-    <text x="46" y="49" font-size="11" font-weight="600" fill="#0f172a">id</text>
-    <text x="294" y="49" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">VARCHAR(36)</text>
-    <line x1="12" y1="59" x2="298" y2="59" stroke="#f1f5f9" stroke-width="1"/>
-
-    <!-- Row 2 -->
-    <rect x="1" y="60" width="308" height="28" fill="#f0fdf4"/>
-    <rect x="14" y="66" width="24" height="16" rx="3" fill="#dcfce7" stroke="#16a34a" stroke-width="1"/>
-    <text x="26" y="78" text-anchor="middle" font-size="8.5" font-weight="700" fill="#15803d">FK</text>
-    <text x="46" y="78" font-size="11" font-weight="600" fill="#15803d">finding_id</text>
-    <text x="294" y="78" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#15803d">VARCHAR(36)</text>
-    <line x1="12" y1="88" x2="298" y2="88" stroke="#f1f5f9" stroke-width="1"/>
-
-    <!-- Row 3 -->
-    <rect x="1" y="89" width="308" height="28" fill="#ffffff"/>
-    <circle cx="26" cy="103" r="3" fill="#94a3b8"/>
-    <text x="46" y="107" font-size="11" fill="#0f172a">action_type</text>
-    <text x="294" y="107" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">VARCHAR(60)</text>
-    <line x1="12" y1="117" x2="298" y2="117" stroke="#f1f5f9" stroke-width="1"/>
-
-    <!-- Row 4 -->
-    <rect x="1" y="118" width="308" height="28" fill="#fef2f2"/>
-    <circle cx="26" cy="132" r="3" fill="#dc2626"/>
-    <text x="46" y="136" font-size="11" font-weight="600" fill="#991b1b">mode</text>
-    <text x="294" y="136" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#991b1b">AUTO / APPROVAL</text>
-    <line x1="12" y1="146" x2="298" y2="146" stroke="#f1f5f9" stroke-width="1"/>
-
-    <!-- Row 5 -->
-    <rect x="1" y="147" width="308" height="26" fill="#ffffff"/>
-    <circle cx="26" cy="160" r="3" fill="#94a3b8"/>
-    <text x="46" y="164" font-size="11" fill="#0f172a">status</text>
-    <text x="294" y="164" text-anchor="end" font-size="9.5" font-family="'Consolas', monospace" fill="#64748b">PROPOSED / EXECUTED</text>
+  <!-- automation_actions -->
+  <g transform="translate(770, 310)" filter="url(#shadow)">
+    <rect x="0" y="0" width="190" height="165" rx="6" fill="#ffffff" stroke="#ea580c" stroke-width="1.4"/>
+    <rect x="0" y="0" width="190" height="28" rx="6" fill="#ea580c"/>
+    <rect x="0" y="14" width="190" height="14" fill="#ea580c"/>
+    <text x="95" y="19" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#ffffff">automation_actions</text>
+    <text x="12" y="46" font-size="9.5" font-weight="bold" fill="#c2410c">PK  id: VARCHAR(36)</text>
+    <text x="12" y="64" font-size="9.5" fill="#334155">    agent: VARCHAR(40)</text>
+    <text x="12" y="82" font-size="9.5" fill="#334155">    action_type: VARCHAR(60)</text>
+    <text x="12" y="100" font-size="9.5" fill="#334155">    mode: AUTO | HITL</text>
+    <text x="12" y="118" font-size="9.5" fill="#334155">    status: EXEC | PROPOSED</text>
+    <text x="12" y="136" font-size="9" fill="#059669">FK  finding_id: VARCHAR(36)</text>
+    <text x="12" y="148" font-size="9" fill="#059669">FK  decision_id: VARCHAR(36)</text>
+    <text x="12" y="160" font-size="9" fill="#334155">    approved_by: VARCHAR</text>
   </g>
 
-  <!-- ============================================================== -->
-  <!-- CLEAN ORTHOGONAL RELATIONSHIPS WITH BADGES -->
-  <!-- ============================================================== -->
+  <!-- Row 2 Connectors -->
+  <!-- users -> agent_runs (vertical down) -->
+  <line x1="135" y1="210" x2="135" y2="308" stroke="#2563eb" stroke-width="1.8" marker-end="url(#er_arr)"/>
+  <rect x="100" y="250" width="70" height="18" rx="3" fill="#ffffff" stroke="#2563eb" stroke-width="1"/>
+  <text x="135" y="262" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#1e40af">1 : N (Run User)</text>
 
-  <!-- users -> orders (1:N) -->
-  <path d="M 270 145 H 368" stroke="#2563eb" stroke-width="2.2" fill="none" marker-end="url(#erArr)"/>
-  <rect x="300" y="134" width="38" height="22" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
-  <text x="319" y="149" text-anchor="middle" font-size="10" font-weight="700" fill="#1e40af">1 : N</text>
+  <!-- agent_runs -> agent_findings -->
+  <line x1="230" y1="390" x2="278" y2="390" stroke="#2563eb" stroke-width="1.8" marker-end="url(#er_arr)"/>
+  <rect x="238" y="380" width="30" height="18" rx="3" fill="#ffffff" stroke="#2563eb" stroke-width="1"/>
+  <text x="253" y="392" text-anchor="middle" font-size="9" font-weight="bold" fill="#1e40af">1 : N</text>
 
-  <!-- orders -> order_items (1:N) -->
-  <path d="M 680 145 H 778" stroke="#2563eb" stroke-width="2.2" fill="none" marker-end="url(#erArr)"/>
-  <rect x="710" y="134" width="38" height="22" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
-  <text x="729" y="149" text-anchor="middle" font-size="10" font-weight="700" fill="#1e40af">1 : N</text>
+  <!-- agent_findings -> orchestration_decisions -->
+  <line x1="480" y1="390" x2="528" y2="390" stroke="#2563eb" stroke-width="1.8" marker-end="url(#er_arr)"/>
+  <rect x="488" y="380" width="30" height="18" rx="3" fill="#ffffff" stroke="#2563eb" stroke-width="1"/>
+  <text x="503" y="392" text-anchor="middle" font-size="9" font-weight="bold" fill="#1e40af">M : 1</text>
 
-  <!-- products -> order_items (1:N) -->
-  <path d="M 900 310 V 247" stroke="#2563eb" stroke-width="2.2" fill="none" marker-end="url(#erArr)"/>
-  <rect x="881" y="265" width="38" height="22" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
-  <text x="900" y="280" text-anchor="middle" font-size="10" font-weight="700" fill="#1e40af">1 : N</text>
-
-  <!-- agent_runs -> agent_findings (1:N) -->
-  <path d="M 270 385 H 368" stroke="#2563eb" stroke-width="2.2" fill="none" marker-end="url(#erArr)"/>
-  <rect x="300" y="374" width="38" height="22" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
-  <text x="319" y="389" text-anchor="middle" font-size="10" font-weight="700" fill="#1e40af">1 : N</text>
-
-  <!-- agent_findings -> orchestration_decisions (N:1) -->
-  <path d="M 450 485 V 515 H 325 V 543" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#erArr)"/>
-  <rect x="365" y="504" width="38" height="22" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
-  <text x="384" y="519" text-anchor="middle" font-size="10" font-weight="700" fill="#1e40af">N : 1</text>
-
-  <!-- agent_findings -> automation_actions (1:N) -->
-  <path d="M 600 485 V 515 H 735 V 543" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#erArr)"/>
-  <rect x="650" y="504" width="38" height="22" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="1.2"/>
-  <text x="669" y="519" text-anchor="middle" font-size="10" font-weight="700" fill="#1e40af">1 : N</text>
+  <!-- orchestration_decisions -> automation_actions -->
+  <line x1="720" y1="390" x2="768" y2="390" stroke="#2563eb" stroke-width="1.8" marker-end="url(#er_arr)"/>
+  <rect x="728" y="380" width="30" height="18" rx="3" fill="#ffffff" stroke="#2563eb" stroke-width="1"/>
+  <text x="743" y="392" text-anchor="middle" font-size="9" font-weight="bold" fill="#1e40af">1 : N</text>
 </svg>
